@@ -9,14 +9,13 @@ export async function cargarUsuariosAlaDataBase() {
     const rutaArchivo = path.resolve('server/data/01_usuarios.csv')  // aca indicamos la direccion del archivo usuarios csv
     const usuarios = []; // una lista vacia donde se van almacenar los datos   
 
-    return new promesa ((resolve, rejetc) =>{
+    return new Promise ((resolve, rejetc) =>{
         fs.createReadStream(rutaArchivo)  //fs dice: vamos a leer un nuevo archivo en este el de la variable ruaarchivo
         .pipe(csv()) // le estamos diciend que ese archivo es un csv
 
         // esto se encarga de llena la lista de arriba 'usuarios' el hace un arrays de arrays
         .on('data', (usuario) => {
             usuarios.push([
-                usuario.id_usuario,
                 usuario.nombre_completo.trim(),
                 usuario.identificacion,
                 usuario.correo,
@@ -27,7 +26,7 @@ export async function cargarUsuariosAlaDataBase() {
         // esto es opcional solo es para validr si se cargo o no
         .on('end', async () => {
             try {
-                const sql = 'INSERT INTO usuarios (id_usuario,nombre_completo,identificacion,correo,telefono) VALUES ?';
+                const sql = 'INSERT INTO usuarios (nombre_completo,identificacion,correo,telefono) VALUES ?';
                 const [result] = await pool.query(sql, [usuarios]);
 
                 console.log(`✅ Se insertaron ${result.affectedRows} autores.`);

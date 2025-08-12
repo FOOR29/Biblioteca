@@ -2,11 +2,11 @@ create database mi_base;
 use mi_base;
 
 create table usuarios (
-id int auto_increment primary key,
+id_usuario int auto_increment primary key,
 nombre_completo varchar(255) not null,
 identificacion varchar(50) not null unique,
 correo varchar(255) default null,
-telefono int(30) default null,
+telefono varchar(30) default null,
 fecha_creacion timestamp default current_timestamp,
 fecha_actualizacion timestamp default current_timestamp on update current_timestamp
 );

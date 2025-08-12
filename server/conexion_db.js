@@ -6,7 +6,7 @@ import mysql from "mysql2/promise"  //esto debe ir si o si
 export const pool = mysql.createPool({
     host: "localhost",
     port: "3306",
-    password: "forlan", 
+    password: "Qwe.123*", //cambiar la clave no se te olvide
     database: "mi_base",
     user: "root",
     connectionLimit: 10, // max numero de conexiones activas al mismo tiempo
