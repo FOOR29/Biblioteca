@@ -22,7 +22,7 @@ fecha_actualizacion timestamp default current_timestamp on update current_timest
 
 
 create table prestamos (
-id int auto_increment primary key,
+id_prestamo int auto_increment primary key,
 id_usuario int,
 isbn varchar(50),
 fecha_prestamo date not null,
@@ -30,7 +30,7 @@ fecha_devolucion date not null,
 estado enum("entregado", "retrasado", "activo") default null,
 fecha_creacion timestamp default current_timestamp,
 fecha_actualizacion timestamp default current_timestamp on update current_timestamp,
-foreign key (id_usuario) references usuarios(id) on delete set null on update cascade,
+foreign key (id_usuario) references usuarios(id_usuario) on delete set null on update cascade,
 foreign key (isbn) references libros(isbn) on delete set null on update cascade
 );
 
