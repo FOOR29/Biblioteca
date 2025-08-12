@@ -1,0 +1,3 @@
+para correr el fron npm run dev
+
+y el back con node server.index.js
