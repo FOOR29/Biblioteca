@@ -34,3 +34,13 @@ foreign key (id_usuario) references usuarios(id_usuario) on delete set null on u
 foreign key (isbn) references libros(isbn) on delete set null on update cascade
 );
 
+
+-- consula join
+select
+prestamos.id_prestamo as prestamo,
+usuarios.nombre_completo as usuario,
+libros.isbn,
+libros.titulo as libro
+from prestamos
+join usuarios on usuarios.id_usuario = prestamos.id_usuario
+join libros on libros.isbn=prestamos.isbn;
