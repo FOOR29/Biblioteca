@@ -1,0 +1,82 @@
+1. INNER JOIN (lo más usado)
+
+Saca solo lo que coincide en ambas tablas.
+
+SELECT a.id, a.nombre, b.total
+FROM tablaA a
+INNER JOIN tablaB b ON a.id = b.id_tablaA;
+
+
+---
+
+2. LEFT JOIN (todos de la izquierda aunque no haya coincidencia)
+
+SELECT a.id, a.nombre, b.total
+FROM tablaA a
+LEFT JOIN tablaB b ON a.id = b.id_tablaA;
+
+
+---
+
+3. RIGHT JOIN (todos de la derecha aunque no haya coincidencia)
+
+SELECT a.id, a.nombre, b.total
+FROM tablaA a
+RIGHT JOIN tablaB b ON a.id = b.id_tablaA;
+
+
+---
+
+📊 Rankings y Totales
+
+4. Ranking por cantidad (ej: top clientes por compras)
+
+SELECT c.nombre, COUNT(f.id) AS total_compras
+FROM clientes c
+INNER JOIN facturas f ON c.id = f.id_cliente
+GROUP BY c.id
+ORDER BY total_compras DESC
+LIMIT 10;
+
+
+---
+
+5. Ranking por valor total (ej: top clientes por dinero gastado)
+
+SELECT c.nombre, SUM(f.total) AS total_gastado
+FROM clientes c
+INNER JOIN facturas f ON c.id = f.id_cliente
+GROUP BY c.id
+ORDER BY total_gastado DESC
+LIMIT 10;
+
+
+---
+
+6. Total general de una tabla (ej: total vendido)
+
+SELECT SUM(total) AS total_vendido
+FROM facturas;
+
+
+---
+
+7. Promedio, máximo y mínimo (estadísticas rápidas)
+
+SELECT 
+    AVG(total) AS promedio,
+    MAX(total) AS maximo,
+    MIN(total) AS minimo
+FROM facturas;
+
+
+---
+
+8. Ranking con JOIN y condición extra (ej: top productos más vendidos)
+
+SELECT p.nombre, SUM(d.cantidad) AS total_vendido
+FROM productos p
+INNER JOIN detalle_factura d ON p.id = d.id_producto
+GROUP BY p.id
+ORDER BY total_vendido DESC
+LIMIT 10;
