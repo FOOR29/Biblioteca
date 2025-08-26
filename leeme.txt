@@ -1,3 +1,24 @@
 para correr el fron npm run dev
 
 y el back con node server.index.js
+
+
+comandos baiscos MySQL
+
+> -- para selecionar campos espesificos de una tabla
+`select nombre, apellido from clientes;`
+
+
+
+> -- Uso del where
+> -- syntaxix basica
+`SELECT columnas
+FROM tabla
+WHERE condición;`
+
+
+> -- para selecionar campos espesificos de una tabla
+`select nombre, apellido from clientes;`
+
+> -- para traer clientes de medallo
+`select nombre, ciudad from clientes where ciudad = 'Medellin';`
