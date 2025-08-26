@@ -22,3 +22,22 @@ WHERE condición;`
 
 > -- para traer clientes de medallo
 `select nombre, ciudad from clientes where ciudad = 'Medellin';`
+
+
+
+
+para user el Postman 
+
+se debe corregir el index.js
+node index.js
+
+una ves corriendo en Postman pegamos el Endpoint
+
+http/localhost:3000/prestamos/
+
+este es para traer a uno, por ID
+para todos es el 
+
+http/localhost:3000/prestamos
+
+creo
